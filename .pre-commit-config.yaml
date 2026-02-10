@@ -13,12 +13,6 @@ repos:
       # Run the formatter
       - id: ruff-format
 
-  # Ty - Fast type checker for Python
-  - repo: https://github.com/qschuler/ty
-    rev: v0.0.15
-    hooks:
-      - id: ty
-
   # General pre-commit hooks
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0
