@@ -63,16 +63,12 @@ skip-magic-trailing-comma = false
 line-ending = "auto"
 
 # Ty (type checker) configuration
-[tool.ty]
-strict = true
-warn_redundant_casts = true
-warn_unused_ignores = true
-warn_return_any = true
-warn_unreachable = true
-disallow_untyped_defs = true
-disallow_any_generics = true
-check_untyped_defs = true
-no_implicit_optional = true
+# Note: ty checks type correctness but doesn't enforce annotations by default
+# To see ty in action, look for actual type mismatches (see test_ty.py)
+[tool.ty.rules]
+# Enable all default type checking rules
+invalid-return-type = "error"
+invalid-assignment = "error"
 
 # pytest configuration (for future use)
 [tool.pytest.ini_options]

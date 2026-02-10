@@ -94,5 +94,25 @@ def confusing_function(data):
         return None  # What types are valid? Type hints would clarify!
 
 
+# ISSUE: Type mismatch - returns wrong type (Ty will catch this!)
+def get_user_age() -> int:
+    """This claims to return int but returns string - Ty catches this!"""
+    return "not a number"  # Type error!
+
+
+# ISSUE: Type mismatch in assignment (Ty will catch this!)
+def process_data() -> None:
+    """Type annotation says int but assigned string - Ty catches this!"""
+    count: int = "five"  # Type error!
+    print(count)
+
+
+# ISSUE: Wrong return type (Ty will catch this!)
+def calculate_total(items: list[int]) -> int:
+    """Should return int but returns None - Ty catches this!"""
+    total = sum(items)
+    # Oops, forgot to return!
+
+
 if __name__ == "__main__":
     print("This file has intentional issues for demo purposes!")
