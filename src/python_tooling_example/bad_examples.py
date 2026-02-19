@@ -8,15 +8,19 @@ To exclude from pre-commit: git add bad_examples.py --no-verify
 """
 
 # ISSUE: Unused imports (Ruff will catch this)
+import sys
+import os
+from typing import List, Dict
+import json
 
 
 # ISSUE: No type hints (Pyright will catch this)
 def add(a, b):
-    return a + b  # ISSUE: No spaces around operator (Ruff format will fix)
+    return a+b  # ISSUE: No spaces around operator (Ruff format will fix)
 
 
 # ISSUE: Using old-style type hints instead of built-in types
-def process_items(items: list[str]) -> dict[str, int]:
+def process_items(items: List[str]) -> Dict[str, int]:
     result = {}
     for item in items:
         result[item] = len(item)
