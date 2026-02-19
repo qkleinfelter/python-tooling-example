@@ -11,14 +11,14 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
     "ruff>=0.15.0",
-    "ty>=0.0.15",
+    "pyright>=1.1.0",
     "pre-commit>=4.0.0",
 ]
 
 [dependency-groups]
 dev = [
     "ruff>=0.15.0",
-    "ty>=0.0.15",
+    "pyright>=1.1.0",
     "pre-commit>=4.0.0",
 ]
 
@@ -62,13 +62,36 @@ indent-style = "space"
 skip-magic-trailing-comma = false
 line-ending = "auto"
 
-# Ty (type checker) configuration
-# Note: ty checks type correctness but doesn't enforce annotations by default
-# To see ty in action, look for actual type mismatches (see test_ty.py)
-[tool.ty.rules]
-# Enable all default type checking rules
-invalid-return-type = "error"
-invalid-assignment = "error"
+# Pyright (type checker) configuration
+[tool.pyright]
+include = ["src"]
+exclude = ["**/__pycache__"]
+stubPath = "src/stubs"
+venvPath = "."
+venv = ".venv"
+
+# Type checking settings
+typeCheckingMode = "strict"  # "off", "basic", "standard", or "strict"
+pythonVersion = "3.12"
+pythonPlatform = "All"
+
+# Enable specific checks
+reportMissingImports = true
+reportMissingTypeStubs = false
+reportUnusedImport = true
+reportUnusedVariable = true
+reportDuplicateImport = true
+reportIncompatibleMethodOverride = true
+reportIncompatibleVariableOverride = true
+reportInconsistentConstructor = true
+reportInvalidTypeVarUse = true
+reportMatchNotExhaustive = true
+reportMissingParameterType = true
+reportMissingTypeArgument = true
+reportUnnecessaryIsInstance = true
+reportUnnecessaryCast = true
+reportUnnecessaryComparison = true
+reportUnnecessaryContains = true
 
 # pytest configuration (for future use)
 [tool.pytest.ini_options]

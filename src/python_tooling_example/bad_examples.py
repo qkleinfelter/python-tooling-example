@@ -8,19 +8,15 @@ To exclude from pre-commit: git add bad_examples.py --no-verify
 """
 
 # ISSUE: Unused imports (Ruff will catch this)
-import sys
-import os
-from typing import List, Dict
-import json
 
 
-# ISSUE: No type hints (Ty will catch this)
+# ISSUE: No type hints (Pyright will catch this)
 def add(a, b):
-    return a+b  # ISSUE: No spaces around operator (Ruff format will fix)
+    return a + b  # ISSUE: No spaces around operator (Ruff format will fix)
 
 
 # ISSUE: Using old-style type hints instead of built-in types
-def process_items(items: List[str]) -> Dict[str, int]:
+def process_items(items: list[str]) -> dict[str, int]:
     result = {}
     for item in items:
         result[item] = len(item)
@@ -40,7 +36,7 @@ def bad_function(x):
 class MyClass:
     def __init__(self, name):
         self.name = name
-    
+
     def get_name(self):
         return self.name
 
@@ -94,22 +90,22 @@ def confusing_function(data):
         return None  # What types are valid? Type hints would clarify!
 
 
-# ISSUE: Type mismatch - returns wrong type (Ty will catch this!)
+# ISSUE: Type mismatch - returns wrong type (Pyright will catch this!)
 def get_user_age() -> int:
-    """This claims to return int but returns string - Ty catches this!"""
+    """This claims to return int but returns string - Pyright catches this!"""
     return "not a number"  # Type error!
 
 
-# ISSUE: Type mismatch in assignment (Ty will catch this!)
+# ISSUE: Type mismatch in assignment (Pyright will catch this!)
 def process_data() -> None:
-    """Type annotation says int but assigned string - Ty catches this!"""
+    """Type annotation says int but assigned string - Pyright catches this!"""
     count: int = "five"  # Type error!
     print(count)
 
 
-# ISSUE: Wrong return type (Ty will catch this!)
+# ISSUE: Wrong return type (Pyright will catch this!)
 def calculate_total(items: list[int]) -> int:
-    """Should return int but returns None - Ty catches this!"""
+    """Should return int but returns None - Pyright catches this!"""
     total = sum(items)
     # Oops, forgot to return!
 

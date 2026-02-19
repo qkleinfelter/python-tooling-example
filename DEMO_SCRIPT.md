@@ -19,7 +19,7 @@ A step-by-step guide for demonstrating modern Python tooling.
 ### The Solution
 - **uv**: Fast package management (Rust-based)
 - **Ruff**: Fast linting & formatting (Rust-based)
-- **Ty**: Fast type checking (Rust-based)
+- **Pyright**: Feature-rich type checking (TypeScript-based)
 - **pre-commit**: Automated quality checks
 - **pyproject.toml**: Centralized configuration
 
@@ -100,18 +100,19 @@ Open `pyproject.toml` and highlight the `[tool.ruff]` section:
 - Selected rule sets
 - Per-file ignores
 
-## Part 4: Ty Demo (5 min)
+## Part 4: Pyright Demo (5 min)
 
 ### Show Type Checking
 ```bash
 # Run type checker
-uv run ty .
+uv run pyright
 ```
 
 **Demonstrate:**
-- How it catches missing type hints
-- Type mismatches
-- Optional type issues
+- How it catches type mismatches
+- Missing return statements
+- Incompatible assignments
+- Rich type inference
 
 ### Show main.py
 Walk through `src/python_tooling_example/main.py` and show:
@@ -120,8 +121,9 @@ Walk through `src/python_tooling_example/main.py` and show:
 - Modern type hints (list[User] vs List[User])
 
 **Talking Points:**
-- "Ty is a modern alternative to mypy"
-- "Faster and simpler"
+- "Pyright is Microsoft's type checker with excellent VS Code integration"
+- "Fast and feature-rich"
+- "Supports standard, basic, and strict modes"
 - "Configured via pyproject.toml"
 
 ## Part 5: Pre-commit Demo (5 min)
@@ -151,7 +153,6 @@ git commit -m "Bad code"
 **Show:** pre-commit automatically:
 - Runs Ruff linting
 - Runs Ruff formatting
-- Runs Ty type checking
 - Runs other hooks (trailing whitespace, etc.)
 - **Blocks the commit** if there are issues!
 
@@ -228,7 +229,7 @@ Open and walk through:
 
 3. **Tool Configurations**
    - `[tool.ruff]`
-   - `[tool.ty]`
+   - `[tool.pyright]`
    - `[tool.pytest.ini_options]` (for future)
 
 **Talking Points:**
@@ -250,7 +251,7 @@ Open and walk through:
    ```bash
    uv run ruff check .
    uv run ruff format .
-   uv run ty .
+   uv run pyright
    ```
 
 3. **Try to commit:**
@@ -284,7 +285,7 @@ Open and walk through:
 ### Resources
 - uv: https://github.com/astral-sh/uv
 - Ruff: https://docs.astral.sh/ruff/
-- Ty: https://github.com/qschuler/ty
+- Pyright: https://microsoft.github.io/pyright/
 - pre-commit: https://pre-commit.com/
 - Pydantic: https://docs.pydantic.dev/
 
@@ -299,7 +300,7 @@ Q: "Can I use this with existing projects?"
 A: "Absolutely! Ruff can be adopted incrementally, uv is pip-compatible."
 
 Q: "What about mypy?"
-A: "Ty is newer and faster, but mypy is also great. Both work with pyproject.toml."
+A: "Pyright is Microsoft's type checker with great VS Code integration. Mypy is also excellent. Both work with pyproject.toml."
 
 Q: "Do I need all these tools?"
 A: "Start with what helps most. Ruff alone is a huge improvement!"

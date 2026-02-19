@@ -4,7 +4,7 @@ This repository demonstrates modern Python development tools and best practices,
 
 - 🚀 **uv** - Lightning-fast Python package installer and resolver
 - ⚡ **Ruff** - Extremely fast Python linter and formatter (replaces flake8, black, isort, and more)
-- 🔍 **Ty** - Fast type checker for Python
+- 🔍 **Pyright** - Fast, feature-rich type checker for Python
 - 🪝 **pre-commit** - Git hooks for automated code quality checks
 - ✅ **Pydantic** - Data validation using Python type annotations
 
@@ -16,7 +16,7 @@ This repository demonstrates modern Python development tools and best practices,
    ```bash
    # On Windows (PowerShell)
    powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
-   
+
    # On macOS/Linux
    curl -LsSf https://astral.sh/uv/install.sh | sh
    ```
@@ -85,23 +85,25 @@ ruff check --watch .      # Watch mode for development
 
 **Configuration:** See `[tool.ruff]` in [pyproject.toml](pyproject.toml)
 
-### 🔍 Ty
+### 🔍 Pyright
 
-[Ty](https://github.com/qschuler/ty) is a fast type checker for Python, designed to be simpler and faster than mypy while still being powerful.
+[Pyright](https://github.com/microsoft/pyright) is a fast, feature-rich type checker for Python from Microsoft.
 
 **Key features:**
-- Fast type checking
-- Simple configuration
-- Excellent error messages
+- Fast type checking written in TypeScript/Node.js
+- Rich type inference
+- Excellent VS Code integration
+- Supports standard, basic, and strict type checking modes
 - Configuration via pyproject.toml
 
 **Common commands:**
 ```bash
-ty .                      # Type check all files
-ty main.py               # Type check a specific file
+pyright                   # Type check all files
+pyright src/              # Type check specific directory
+pyright --watch           # Watch mode
 ```
 
-**Configuration:** See `[tool.ty]` in [pyproject.toml](pyproject.toml)
+**Configuration:** See `[tool.pyright]` in [pyproject.toml](pyproject.toml)
 
 ### 🪝 pre-commit
 
@@ -156,7 +158,7 @@ pre-commit autoupdate        # Update hook versions
 All tool configurations are centralized in [pyproject.toml](pyproject.toml), following modern Python best practices:
 
 - **Ruff**: Linting rules, formatting options
-- **Ty**: Type checking strictness and options
+- **Pyright**: Type checking strictness and options
 - **pytest**: Test configuration (for future use)
 
 ## Development Workflow
@@ -166,7 +168,7 @@ All tool configurations are centralized in [pyproject.toml](pyproject.toml), fol
    ```bash
    ruff format .
    ruff check --fix .
-   ty .
+   pyright
    ```
 3. Or simply try to commit - pre-commit will run all checks automatically!
    ```bash
@@ -183,7 +185,7 @@ Planned additions to this demo:
 
 ## Why These Tools?
 
-**Speed**: Modern tools like uv, Ruff, and Ty are written in Rust and are 10-100x faster than traditional Python tools.
+**Speed**: Modern tools like uv, Ruff, and Pyright are designed for performance and developer experience.
 
 **Developer Experience**: Faster feedback loops, better error messages, and automatic fixes mean less time fighting tools and more time coding.
 
@@ -195,7 +197,7 @@ Planned additions to this demo:
 
 - [uv Documentation](https://github.com/astral-sh/uv)
 - [Ruff Documentation](https://docs.astral.sh/ruff/)
-- [Ty Documentation](https://github.com/qschuler/ty)
+- [Pyright Documentation](https://microsoft.github.io/pyright/)
 - [pre-commit Documentation](https://pre-commit.com/)
 - [Pydantic Documentation](https://docs.pydantic.dev/)
 

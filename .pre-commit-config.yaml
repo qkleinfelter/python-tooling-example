@@ -5,7 +5,7 @@
 repos:
   # Ruff linter - extremely fast Python linter
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.9.1
+    rev: v0.15.1
     hooks:
       # Run the linter
       - id: ruff
@@ -13,9 +13,15 @@ repos:
       # Run the formatter
       - id: ruff-format
 
+  # Pyright - Fast type checker for Python
+  - repo: https://github.com/RobertCraigie/pyright-python
+    rev: v1.1.408
+    hooks:
+      - id: pyright
+
   # General pre-commit hooks
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v5.0.0
+    rev: v6.0.0
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
