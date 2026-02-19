@@ -207,6 +207,7 @@ Open and walk through:
    uv run ruff format .
    uv run pyright
    ```
+   VSCode editor integrations mean you can avoid these!
 
 3. **Try to commit:**
    ```bash
