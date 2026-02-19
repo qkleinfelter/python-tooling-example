@@ -4,9 +4,8 @@ Python Tooling Example - Demo package for modern Python tooling tech talk.
 This package demonstrates:
 - uv for fast package management
 - Ruff for linting and formatting
-- Ty for type checking
+- Pyright for type checking
 - pre-commit for automated quality checks
-- Pydantic for data validation
 """
 
 __version__ = "0.1.0"

@@ -117,8 +117,8 @@ uv run pyright
 ### Show main.py
 Walk through `src/python_tooling_example/main.py` and show:
 - Properly typed functions
-- Pydantic models with validation
-- Modern type hints (list[User] vs List[User])
+- Type annotations on classes and methods
+- Modern type hints (list[str] vs List[str])
 
 **Talking Points:**
 - "Pyright is Microsoft's type checker with excellent VS Code integration"
@@ -169,48 +169,7 @@ git commit -m "Fixed code"
 - "Can auto-fix many issues"
 - "Team-wide consistency"
 
-## Part 6: Pydantic Demo (5 min)
-
-### Show main.py User Model
-Walk through the `User` class in `src/python_tooling_example/main.py`:
-```python
-class User(BaseModel):
-    id: int
-    username: str = Field(..., min_length=3, max_length=20)
-    email: str
-    created_at: datetime = Field(default_factory=datetime.now)
-    is_active: bool = True
-```
-
-### Demonstrate Validation
-In Python REPL or a new demo file:
-```python
-from python_tooling_example.main import User
-
-# Valid user
-user = User(id=1, username="alice", email="alice@example.com")
-print(user)
-
-# Invalid - username too short
-try:
-    User(id=2, username="ab", email="test@example.com")
-except Exception as e:
-    print(f"Error: {e}")
-
-# Invalid - bad email
-try:
-    User(id=3, username="bob", email="not-an-email")
-except Exception as e:
-    print(f"Error: {e}")
-```
-
-**Talking Points:**
-- "Runtime validation with type hints"
-- "Clear error messages"
-- "Perfect for API inputs, configuration, data pipelines"
-- "Works great with FastAPI"
-
-## Part 7: Configuration in pyproject.toml (5 min)
+## Part 6: Configuration in pyproject.toml (5 min)
 
 ### Show pyproject.toml
 Open and walk through:
@@ -222,12 +181,7 @@ Open and walk through:
    version = "0.1.0"
    ```
 
-2. **Dependencies**
-   ```toml
-   dependencies = ["pydantic>=2.0.0"]
-   ```
-
-3. **Tool Configurations**
+2. **Tool Configurations**
    - `[tool.ruff]`
    - `[tool.pyright]`
    - `[tool.pytest.ini_options]` (for future)
@@ -238,7 +192,7 @@ Open and walk through:
 - "No more setup.py, setup.cfg, tox.ini, .flake8, etc."
 - "More maintainable"
 
-## Part 8: Putting It All Together (5 min)
+## Part 7: Putting It All Together (5 min)
 
 ### Typical Workflow Demo
 
@@ -281,13 +235,13 @@ Open and walk through:
 - pytest for testing
 - FastAPI for web APIs
 - Docker for deployment
+- CI/CD integration
 
 ### Resources
 - uv: https://github.com/astral-sh/uv
 - Ruff: https://docs.astral.sh/ruff/
 - Pyright: https://microsoft.github.io/pyright/
 - pre-commit: https://pre-commit.com/
-- Pydantic: https://docs.pydantic.dev/
 
 ## Q&A Tips
 

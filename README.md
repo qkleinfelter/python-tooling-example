@@ -6,7 +6,6 @@ This repository demonstrates modern Python development tools and best practices,
 - ⚡ **Ruff** - Extremely fast Python linter and formatter (replaces flake8, black, isort, and more)
 - 🔍 **Pyright** - Fast, feature-rich type checker for Python
 - 🪝 **pre-commit** - Git hooks for automated code quality checks
-- ✅ **Pydantic** - Data validation using Python type annotations
 
 ## Quick Start
 
@@ -124,18 +123,6 @@ pre-commit autoupdate        # Update hook versions
 
 **Configuration:** See [.pre-commit-config.yaml](.pre-commit-config.yaml)
 
-### ✅ Pydantic
-
-[Pydantic](https://docs.pydantic.dev/) provides data validation using Python type annotations.
-
-**Key features:**
-- Runtime validation
-- IDE support
-- JSON schema generation
-- Performance-optimized
-
-**Example usage:** See the `User` model in [src/python_tooling_example/main.py](src/python_tooling_example/main.py)
-
 ## Project Structure
 
 ```
@@ -143,7 +130,7 @@ pre-commit autoupdate        # Update hook versions
 ├── src/
 │   └── python_tooling_example/    # Main package
 │       ├── __init__.py            # Package initialization
-│       ├── main.py                # Demo code with Pydantic models
+│       ├── main.py                # Demo code showcasing tooling
 │       ├── utils.py               # Utility functions with type hints
 │       └── bad_examples.py        # Intentionally broken code for demos
 ├── pyproject.toml                 # Project configuration and tool settings
@@ -176,13 +163,6 @@ All tool configurations are centralized in [pyproject.toml](pyproject.toml), fol
    git commit -m "Your message"
    ```
 
-## Future Additions
-
-Planned additions to this demo:
-- SQLAlchemy for database ORM
-- Alembic for database migrations
-- pytest for testing
-
 ## Why These Tools?
 
 **Speed**: Modern tools like uv, Ruff, and Pyright are designed for performance and developer experience.
@@ -199,7 +179,6 @@ Planned additions to this demo:
 - [Ruff Documentation](https://docs.astral.sh/ruff/)
 - [Pyright Documentation](https://microsoft.github.io/pyright/)
 - [pre-commit Documentation](https://pre-commit.com/)
-- [Pydantic Documentation](https://docs.pydantic.dev/)
 
 ## License
 

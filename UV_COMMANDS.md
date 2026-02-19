@@ -45,7 +45,7 @@ uv add requests
 uv add --dev pytest
 
 # Add a specific version
-uv add "pydantic>=2.0.0"
+uv add "requests>=2.31.0"
 
 # Remove a dependency
 uv remove requests

@@ -3,31 +3,22 @@ Demo module showcasing modern Python tooling.
 
 This module demonstrates features that are caught/improved by:
 - Ruff (linting and formatting)
-- Ty (type checking)
-- Pydantic (data validation)
+- Pyright (type checking)
 """
 
+from dataclasses import dataclass, field
 from datetime import datetime
 
-from pydantic import BaseModel, Field, field_validator
 
-
-class User(BaseModel):
-    """User model with Pydantic validation."""
+@dataclass
+class User:
+    """User model demonstrating proper type annotations."""
 
     id: int
-    username: str = Field(..., min_length=3, max_length=20)
+    username: str
     email: str
-    created_at: datetime = Field(default_factory=datetime.now)
+    created_at: datetime = field(default_factory=datetime.now)
     is_active: bool = True
-
-    @field_validator("email")
-    @classmethod
-    def validate_email(cls, v: str) -> str:
-        """Basic email validation."""
-        if "@" not in v:
-            raise ValueError("Invalid email address")
-        return v.lower()
 
 
 def greet_user(user: User) -> str:
